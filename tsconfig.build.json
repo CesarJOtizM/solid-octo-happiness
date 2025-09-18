@@ -6,8 +6,7 @@
     "removeComments": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
-    "outExtension": ".cjs"
+    "sourceMap": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "tests", "**/*.test.ts", "**/*.spec.ts"]
