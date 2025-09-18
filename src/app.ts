@@ -1,10 +1,13 @@
 import express from "express";
 import { logger } from "utils";
-import { loggingMiddleware } from "middleware";
+import { loggingMiddleware, validateEnvironment } from "middleware";
 import { healthRoutes } from "routes";
+import { config } from "config";
+
+validateEnvironment();
 
 const app = express();
-const PORT = process.env["PORT"] ?? 3000;
+const PORT = config.server.port;
 
 app.use(express.json());
 app.use(loggingMiddleware);

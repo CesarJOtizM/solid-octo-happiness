@@ -28,12 +28,14 @@
     "baseUrl": "./src",
     "paths": {
       "src/*": ["*"],
-      "types/*": ["types/*"],
-      "utils/*": ["utils/*"],
-      "services/*": ["services/*"],
-      "controllers/*": ["controllers/*"],
-      "middleware/*": ["middleware/*"],
-      "routes/*": ["routes/*"]
+      "types/*": ["types"],
+      "utils": ["utils"],
+      "utils/*": ["utils"],
+      "services/*": ["services"],
+      "controllers/*": ["controllers"],
+      "middleware/*": ["middleware"],
+      "routes/*": ["routes"],
+      "config/*": ["config"]
     }
   },
   "ts-node": {

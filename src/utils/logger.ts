@@ -15,10 +15,8 @@ export interface LogEntry {
   data?: unknown;
 }
 
-// Configuración del logger
 const isDevelopment = process.env["NODE_ENV"] !== "production";
 
-// Funciones puras para formateo
 const formatTimestamp = (date: Date): string =>
   date.toISOString().replace("T", " ").replace("Z", "");
 
@@ -43,7 +41,6 @@ const formatMessage = (entry: LogEntry): string => {
   return `${chalk.gray(timestamp)} ${coloredLevel} ${context} ${entry.message}${data}`;
 };
 
-// Función principal de logging
 const log = (
   level: LogLevel,
   message: string,
@@ -60,15 +57,12 @@ const log = (
 
   const formattedMessage = formatMessage(entry);
 
-  // En desarrollo, siempre mostrar logs
-  // En producción, solo mostrar WARN y ERROR
   if (isDevelopment || level === LogLevel.WARN || level === LogLevel.ERROR) {
     // eslint-disable-next-line no-console
     console.log(formattedMessage);
   }
 };
 
-// Funciones específicas por nivel
 export const debug = (
   message: string,
   context?: string,
@@ -87,7 +81,6 @@ export const error = (
   data?: unknown
 ): void => log(LogLevel.ERROR, message, context, data);
 
-// Funciones específicas para la API
 export const apiRequest = (
   method: string,
   url: string,
@@ -126,7 +119,6 @@ export const holidayServiceError = (error: string, data?: unknown): void =>
     data
   );
 
-// Objeto logger para compatibilidad con el código existente
 export const logger = {
   debug,
   info,
