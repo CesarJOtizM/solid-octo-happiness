@@ -1,0 +1,1 @@
+export { getHealthCheck } from "./healthController";

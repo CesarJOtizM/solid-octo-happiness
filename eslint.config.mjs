@@ -1,12 +1,14 @@
-import pkg from "@eslint/js";
-const { configs } = pkg;
+import js from "@eslint/js";
 import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 import prettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
 
 export default [
-  configs.recommended,
+  // Configuración base recomendada de ESLint
+  js.configs.recommended,
+
+  // Configuración para archivos TypeScript en src/
   {
     files: ["src/**/*.ts"],
     languageOptions: {
@@ -17,6 +19,7 @@ export default [
         project: "./tsconfig.json",
       },
       globals: {
+        // Node.js globals
         process: "readonly",
         console: "readonly",
         Buffer: "readonly",
@@ -26,6 +29,15 @@ export default [
         module: "readonly",
         require: "readonly",
         exports: "readonly",
+        // ES6 globals
+        Promise: "readonly",
+        Set: "readonly",
+        Map: "readonly",
+        WeakSet: "readonly",
+        WeakMap: "readonly",
+        Symbol: "readonly",
+        Proxy: "readonly",
+        Reflect: "readonly",
       },
     },
     plugins: {
@@ -33,7 +45,7 @@ export default [
       prettier: prettier,
     },
     rules: {
-      // TypeScript specific rules
+      // Reglas específicas de TypeScript
       "@typescript-eslint/no-unused-vars": [
         "error",
         { argsIgnorePattern: "^_" },
@@ -43,16 +55,23 @@ export default [
       "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/await-thenable": "error",
       "@typescript-eslint/no-misused-promises": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": "error",
+      "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/no-unnecessary-type-assertion": "error",
 
-      // General rules
+      // Reglas generales
       "no-console": "warn",
       "prefer-const": "error",
       "no-var": "error",
+      "no-unused-vars": "off", // Usamos la versión de TypeScript
+      "no-undef": "off", // TypeScript maneja esto
 
-      // Prettier integration
+      // Integración con Prettier
       "prettier/prettier": "error",
     },
   },
+
+  // Configuración para archivos de test
   {
     files: ["tests/**/*.ts"],
     languageOptions: {
@@ -62,17 +81,23 @@ export default [
         sourceType: "module",
       },
       globals: {
+        // Jest globals
         jest: "readonly",
         describe: "readonly",
         it: "readonly",
+        test: "readonly",
         expect: "readonly",
         beforeEach: "readonly",
         afterEach: "readonly",
         beforeAll: "readonly",
         afterAll: "readonly",
+        // Node.js globals
         process: "readonly",
         console: "readonly",
         global: "readonly",
+        Buffer: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
       },
     },
     plugins: {
@@ -85,12 +110,26 @@ export default [
         { argsIgnorePattern: "^_" },
       ],
       "@typescript-eslint/no-explicit-any": "warn",
-      "no-console": "off", // Allow console in tests
+      "no-console": "off", // Permitir console en tests
       "prettier/prettier": "error",
     },
   },
+
+  // Configuración de Prettier
   prettierConfig,
+
+  // Archivos a ignorar
   {
-    ignores: ["dist/", "node_modules/", "coverage/"],
+    ignores: [
+      "dist/",
+      "node_modules/",
+      "coverage/",
+      "*.js",
+      "*.mjs",
+      "*.cjs",
+      "*.d.ts",
+      "*.d.ts.map",
+      "*.js.map",
+    ],
   },
 ];
