@@ -2,7 +2,7 @@
 // Este archivo se ejecuta antes de cada test
 
 // Configurar timeout para tests que hacen llamadas HTTP
-jest.setTimeout(10000);
+jest.setTimeout(1000);
 
 // Mock de console para evitar logs durante los tests
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

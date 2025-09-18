@@ -1,12 +1,13 @@
 {
-  "name": "businessdates",
+  "name": "business_dates",
   "version": "1.0.0",
   "description": "API REST para cálculo de fechas hábiles en Colombia",
-  "main": "dist/app.js",
+  "type": "module",
+  "main": "dist/app.cjs",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/app.js",
-    "dev": "nodemon --exec ts-node src/app.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/app.cjs",
+    "dev": "nodemon --exec ts-node --esm src/app.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
