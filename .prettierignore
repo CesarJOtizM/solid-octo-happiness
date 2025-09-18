@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Logs
+*.log
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Generated files
+*.d.ts
+*.js.map
+*.d.ts.map
+
+# Environment files
+.env*
+
+# IDE
+.vscode/
+.idea/
