@@ -13,13 +13,16 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"],
-      "@/types/*": ["types/*"],
-      "@/utils/*": ["utils/*"],
-      "@/services/*": ["services/*"],
-      "@/controllers/*": ["controllers/*"],
-      "@/middleware/*": ["middleware/*"],
-      "@/routes/*": ["routes/*"]
+      "src/*": ["*"],
+      "types/*": ["types"],
+      "utils": ["utils"],
+      "utils/*": ["utils"],
+      "services/*": ["services"],
+      "controllers/*": ["controllers"],
+      "middleware/*": ["middleware"],
+      "routes/*": ["routes"],
+      "config/*": ["config"],
+      "schemas/*": ["schemas"]
     }
   },
   "include": ["src/**/*"],

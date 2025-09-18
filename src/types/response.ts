@@ -7,6 +7,11 @@ export interface BusinessDateErrorResponse {
   message: string;
 }
 
+export interface BusinessDateError {
+  error: string;
+  message: string;
+}
+
 export type BusinessDateResponse =
   | BusinessDateSuccessResponse
   | BusinessDateErrorResponse;

@@ -1,33 +1,46 @@
-export interface BusinessHours {
-  startHour: number;
-  endHour: number;
-  lunchStartHour: number;
-  lunchEndHour: number;
+export interface WorkingHours {
+  start: number; // 8 (8:00 AM)
+  end: number; // 17 (5:00 PM)
+  lunchStart: number; // 12 (12:00 PM)
+  lunchEnd: number; // 13 (1:00 PM)
+}
+
+export interface BusinessDateConfig {
+  timezone: string; // "America/Bogota"
+  workingDays: number[]; // [1, 2, 3, 4, 5] (Monday to Friday)
+  workingHours: WorkingHours;
+}
+
+export interface DateCalculationResult {
+  success: true;
+  resultDate: Date;
+  originalDate: Date;
+  addedDays: number;
+  addedHours: number;
+}
+
+export interface DateCalculationError {
+  success: false;
+  error: string;
+  message: string;
+}
+
+export type DateCalculationResponse =
+  | DateCalculationResult
+  | DateCalculationError;
+
+export interface TimeAdjustment {
+  days: number;
+  hours: number;
+  minutes: number;
 }
 
 export interface BusinessDayInfo {
-  date: Date;
-  isBusinessDay: boolean;
-  isHoliday: boolean;
   isWorkingDay: boolean;
-  businessHours: BusinessHours;
-}
-
-export interface TimeCalculation {
-  startDate: Date;
-  endDate: Date;
-  businessDaysAdded: number;
-  businessHoursAdded: number;
-  holidaysFound: number;
-}
-
-export interface DateRange {
-  start: Date;
-  end: Date;
-}
-
-export interface HolidayInfo {
-  date: Date;
-  name: string;
-  type: string;
+  isHoliday: boolean;
+  isWeekend: boolean;
+  workingHoursStart: Date;
+  workingHoursEnd: Date;
+  lunchStart: Date;
+  lunchEnd: Date;
 }

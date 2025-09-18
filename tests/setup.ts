@@ -1,6 +1,11 @@
 // Configuración global para Jest
 // Este archivo se ejecuta antes de cada test
 
+import { config } from "dotenv";
+
+// Cargar variables de entorno para los tests
+config();
+
 // Configurar timeout para tests que hacen llamadas HTTP
 jest.setTimeout(1000);
 

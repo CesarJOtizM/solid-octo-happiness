@@ -7,14 +7,13 @@ import {
   HolidayResult,
   CacheResult,
 } from "types/holiday";
+import { config } from "config";
 
 let cache: HolidayCache | null = null;
 
 const DEFAULT_CONFIG: HolidayServiceConfig = {
-  apiUrl:
-    process.env["HOLIDAY_API_URL"] ??
-    "https://content.capta.co/Recruitment/WorkingDays.json",
-  cacheTtlMinutes: parseInt(process.env["CACHE_TTL_MINUTES"] ?? "60", 10),
+  apiUrl: config.holidayApi.url,
+  cacheTtlMinutes: config.cache.ttlMinutes,
   timeoutMs: 10000,
   maxRetries: 3,
 };

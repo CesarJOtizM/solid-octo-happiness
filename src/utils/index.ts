@@ -16,15 +16,26 @@ export {
 
 // Utilidades de fecha
 export {
-  COLOMBIA_TIMEZONE,
-  utcToColombiaTime,
-  colombiaTimeToUtc,
-  isBusinessDay,
-  getWeekDay,
-  formatDateForLog,
-  formatDateForApi,
-  parseISODate,
-  isValidDate,
-  getStartOfDay,
-  getEndOfDay,
+  WORKING_HOURS,
+  WORKING_DAYS,
+  isWorkingDay,
+  isWithinWorkingHours,
+  isLunchTime,
+  getBusinessDayInfo,
+  adjustToPreviousWorkingTime,
+  getNextWorkingDay,
+  calculateWorkingMinutes,
 } from "./dateUtils";
+
+// Utilidades de zona horaria
+export {
+  COLOMBIA_TIMEZONE,
+  utcToColombia,
+  colombiaToUtc,
+  formatUtcToColombia,
+  getCurrentColombiaTime,
+  parseIsoToColombiaUtc,
+  isValidIsoDate,
+  toIsoUtcString,
+  createColombiaDate,
+} from "./timezoneUtils";

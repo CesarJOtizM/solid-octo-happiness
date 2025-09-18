@@ -11,7 +11,7 @@ module.exports = {
   coverageReporters: ["text", "lcov", "html"],
   setupFilesAfterEnv: ["<rootDir>/tests/setup.ts"],
   testTimeout: 10000,
-  moduleNameMapping: {
+  moduleNameMapper: {
     "^types/(.*)$": "<rootDir>/src/types/$1",
     "^utils/(.*)$": "<rootDir>/src/utils/$1",
     "^services/(.*)$": "<rootDir>/src/services/$1",
@@ -19,5 +19,6 @@ module.exports = {
     "^middleware/(.*)$": "<rootDir>/src/middleware/$1",
     "^routes/(.*)$": "<rootDir>/src/routes/$1",
     "^config/(.*)$": "<rootDir>/src/config/$1",
+    "^schemas/(.*)$": "<rootDir>/src/schemas/$1",
   },
 };

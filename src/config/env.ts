@@ -1,4 +1,8 @@
 import { z } from "zod";
+import { config } from "dotenv";
+
+// Cargar variables de entorno
+config();
 
 const envSchema = z.object({
   PORT: z

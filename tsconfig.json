@@ -35,7 +35,8 @@
       "controllers/*": ["controllers"],
       "middleware/*": ["middleware"],
       "routes/*": ["routes"],
-      "config/*": ["config"]
+      "config/*": ["config"],
+      "schemas/*": ["schemas"]
     }
   },
   "ts-node": {
