@@ -27,6 +27,8 @@ export type {
   HolidayCache,
   HolidayServiceConfig,
   HolidayServiceError,
+  CacheResult,
+  HolidayResult,
 } from "./holiday.js";
 
 // Tipos de health check
