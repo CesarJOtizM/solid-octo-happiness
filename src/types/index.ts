@@ -7,14 +7,14 @@ export type {
   DateCalculationResponse,
   TimeAdjustment,
   BusinessDayInfo,
-} from "./businessDate.js";
+} from "./businessDate";
 
 // Tipos para parámetros de request
 export type {
   BusinessDateRequest,
   BusinessDateQueryParams,
   ParsedBusinessDateRequest,
-} from "./request.js";
+} from "./request";
 
 // Tipos para respuestas de la API
 export type {
@@ -23,9 +23,9 @@ export type {
   BusinessDateErrorResponse,
   BusinessDateError,
   ApiError,
-} from "./response.js";
+} from "./response";
 
-export { ErrorType } from "./response.js";
+export { ErrorType } from "./response";
 
 export type {
   HolidayApiResponse,
@@ -35,10 +35,10 @@ export type {
   HolidayServiceError,
   CacheResult,
   HolidayResult,
-} from "./holiday.js";
+} from "./holiday";
 
 // Tipos de health check
-export type { HealthCheckResponse, HealthCheckDetails } from "./health.js";
+export type { HealthCheckResponse, HealthCheckDetails } from "./health";
 
 // Extensión de tipos de Express
-import "./express.js";
+import "./express";
