@@ -1,5 +1,4 @@
 import { addMinutes } from "date-fns";
-import { z } from "zod";
 import {
   utcToColombia,
   colombiaToUtc,
@@ -14,34 +13,11 @@ import {
 } from "utils/dateUtils";
 import {
   BusinessDateRequest,
-  BusinessDateResponse,
+  BusinessDateSuccessResponse,
   BusinessDateError,
   DateCalculationResponse,
   DateCalculationResult,
 } from "types/businessDate";
-import { businessDateRequestSchema } from "schemas";
-
-const validateRequest = (
-  request: BusinessDateRequest
-): BusinessDateError | null => {
-  try {
-    businessDateRequestSchema.parse(request);
-    return null;
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      const firstError = error.issues[0];
-      return {
-        error: "InvalidParameters",
-        message: firstError?.message ?? "Error de validación",
-      };
-    }
-
-    return {
-      error: "InvalidParameters",
-      message: "Error de validación inesperado",
-    };
-  }
-};
 
 const getStartDate = (request: BusinessDateRequest): Date => {
   if (request.date) {
@@ -144,15 +120,6 @@ const addWorkingHours = async (
 export const calculateBusinessDate = async (
   request: BusinessDateRequest
 ): Promise<DateCalculationResponse> => {
-  const validationError = validateRequest(request);
-  if (validationError) {
-    return {
-      success: false,
-      error: validationError.error,
-      message: validationError.message,
-    };
-  }
-
   try {
     const holidayResult = await import("./holidayService").then(module =>
       module.getHolidays()
@@ -202,7 +169,7 @@ export const calculateBusinessDate = async (
 
 export const formatBusinessDateResponse = (
   result: DateCalculationResult
-): BusinessDateResponse => {
+): BusinessDateSuccessResponse => {
   return {
     date: toIsoUtcString(result.resultDate),
   };

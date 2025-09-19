@@ -6,7 +6,7 @@ import {
   errorHandler,
   notFoundHandler,
 } from "middleware";
-import { healthRoutes } from "routes";
+import { healthRoutes, businessDateRoutes } from "routes";
 import { config } from "config";
 
 validateEnvironment();
@@ -17,6 +17,7 @@ const PORT = config.server.port;
 app.use(express.json());
 app.use(loggingMiddleware);
 app.use("/", healthRoutes);
+app.use("/", businessDateRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 

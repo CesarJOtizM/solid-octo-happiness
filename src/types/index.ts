@@ -39,3 +39,6 @@ export type {
 
 // Tipos de health check
 export type { HealthCheckResponse, HealthCheckDetails } from "./health.js";
+
+// Extensión de tipos de Express
+import "./express.js";

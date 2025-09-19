@@ -13,12 +13,17 @@ module.exports = {
   testTimeout: 10000,
   moduleNameMapper: {
     "^types/(.*)$": "<rootDir>/src/types/$1",
+    "^utils$": "<rootDir>/src/utils",
     "^utils/(.*)$": "<rootDir>/src/utils/$1",
     "^services/(.*)$": "<rootDir>/src/services/$1",
     "^controllers/(.*)$": "<rootDir>/src/controllers/$1",
+    "^middleware$": "<rootDir>/src/middleware",
     "^middleware/(.*)$": "<rootDir>/src/middleware/$1",
+    "^routes$": "<rootDir>/src/routes",
     "^routes/(.*)$": "<rootDir>/src/routes/$1",
+    "^config$": "<rootDir>/src/config",
     "^config/(.*)$": "<rootDir>/src/config/$1",
+    "^schemas$": "<rootDir>/src/schemas",
     "^schemas/(.*)$": "<rootDir>/src/schemas/$1",
   },
 };

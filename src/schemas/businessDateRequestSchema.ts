@@ -4,14 +4,42 @@ import { isValidIsoDate } from "utils/timezoneUtils";
 export const businessDateRequestSchema = z
   .object({
     days: z
-      .number()
-      .int("El parámetro 'days' debe ser un número entero")
-      .min(0, "El parámetro 'days' debe ser un número positivo")
+      .union([z.string(), z.number()])
+      .transform(val => {
+        const num = typeof val === "string" ? Number(val) : val;
+        if (isNaN(num) || !Number.isInteger(num)) {
+          throw new z.ZodError([
+            {
+              code: z.ZodIssueCode.custom,
+              message: "El parámetro 'days' debe ser un número entero",
+              path: ["days"],
+            },
+          ]);
+        }
+        return num;
+      })
+      .refine(val => val >= 0, {
+        message: "El parámetro 'days' debe ser un número positivo",
+      })
       .optional(),
     hours: z
-      .number()
-      .int("El parámetro 'hours' debe ser un número entero")
-      .min(0, "El parámetro 'hours' debe ser un número positivo")
+      .union([z.string(), z.number()])
+      .transform(val => {
+        const num = typeof val === "string" ? Number(val) : val;
+        if (isNaN(num) || !Number.isInteger(num)) {
+          throw new z.ZodError([
+            {
+              code: z.ZodIssueCode.custom,
+              message: "El parámetro 'hours' debe ser un número entero",
+              path: ["hours"],
+            },
+          ]);
+        }
+        return num;
+      })
+      .refine(val => val >= 0, {
+        message: "El parámetro 'hours' debe ser un número positivo",
+      })
       .optional(),
     date: z
       .string()
