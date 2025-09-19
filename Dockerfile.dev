@@ -1,0 +1,41 @@
+# Dockerfile para desarrollo
+FROM alpine:3.21
+
+ENV NODE_VERSION=24.8.0
+
+# Establecer directorio de trabajo
+WORKDIR /app
+
+# Instalar dependencias del sistema
+RUN apk add --no-cache \
+    dumb-init \
+    && rm -rf /var/cache/apk/*
+
+# Crear usuario no-root
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001
+
+# Copiar archivos de configuración
+COPY package*.json ./
+COPY tsconfig*.json ./
+COPY jest.config.js ./
+
+# Instalar todas las dependencias (incluyendo devDependencies)
+RUN npm ci && npm cache clean --force
+
+# Cambiar ownership
+RUN chown -R nextjs:nodejs /app
+USER nextjs
+
+# Exponer puerto
+EXPOSE 3000
+
+# Variables de entorno para desarrollo
+ENV NODE_ENV=development
+ENV PORT=3000
+
+# Usar dumb-init
+ENTRYPOINT ["dumb-init", "--"]
+
+# Comando por defecto (se puede sobrescribir en docker-compose)
+CMD ["npm", "run", "dev"]

@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  # Aplicación en modo desarrollo
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: business-dates-api-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - HOLIDAY_API_URL=${HOLIDAY_API_URL:-https://content.capta.co/Recruitment/WorkingDays.json}
+      - CACHE_TTL_MINUTES=${CACHE_TTL_MINUTES:-5}
+      - API_TIMEOUT_MS=${API_TIMEOUT_MS:-10000}
+      - MAX_RETRIES=${MAX_RETRIES:-3}
+    volumes:
+      - ./src:/app/src:ro
+      - ./tests:/app/tests:ro
+      - ./package.json:/app/package.json:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+      - ./jest.config.js:/app/jest.config.js:ro
+    command: npm run dev
+    restart: unless-stopped
+    networks:
+      - business-dates-dev-network
+
+networks:
+  business-dates-dev-network:
+    driver: bridge
