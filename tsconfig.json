@@ -43,6 +43,6 @@
     "esm": false,
     "experimentalSpecifierResolution": "node"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "include": ["src/**/*", "src/**/*.ts", "src/**/*.js"],
+  "exclude": ["node_modules", "dist"]
 }

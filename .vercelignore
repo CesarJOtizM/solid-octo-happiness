@@ -1,23 +1,34 @@
 # Archivos de desarrollo
-src/
 tests/
 coverage/
 docs/
-*.test.ts
-*.spec.ts
 
 # Archivos de configuración de desarrollo
-docker-compose*.yml
-Dockerfile*
-nginx.conf
+.env
+.env.local
+.env.development
+.env.test
 env.example
-.env*
+env.docker.example
+
+# Archivos de Docker
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+docker-compose.dev.yml
+nginx.conf
+
+# Archivos de configuración de desarrollo
+eslint.config.mjs
+jest.config.js
+.prettierrc
+.husky/
 
 # Archivos de Git
 .git/
 .gitignore
 
-# Archivos de Node
+# Archivos de Node.js
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -38,3 +49,9 @@ Thumbs.db
 # Archivos de logs
 logs/
 *.log
+
+# Archivos de build de desarrollo
+build/
+
+# Mantener el directorio api para Vercel
+!api/

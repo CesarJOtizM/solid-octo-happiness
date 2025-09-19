@@ -5,8 +5,9 @@
   "type": "commonjs",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "build": "tsc && tsc-alias",
     "build:vercel": "npm run build",
+    "vercel-build": "npm run build",
     "start": "node dist/app.js",
     "dev": "nodemon --exec \"node -r tsconfig-paths/register -r ts-node/register src/app.ts\"",
     "test": "jest --u",
