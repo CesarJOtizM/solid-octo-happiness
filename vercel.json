@@ -1,24 +1,15 @@
 {
   "version": 2,
-  "name": "business-dates-api",
   "builds": [
     {
-      "src": "dist/app.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/health",
-      "dest": "/dist/app.js"
-    },
-    {
-      "src": "/business-date",
-      "dest": "/dist/app.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/dist/app.js"
+      "dest": "/api/index.js"
     }
   ],
   "env": {
@@ -26,7 +17,7 @@
     "PORT": "3000"
   },
   "functions": {
-    "dist/app.js": {
+    "api/index.js": {
       "maxDuration": 30
     }
   }

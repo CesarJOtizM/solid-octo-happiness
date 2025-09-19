@@ -1,11 +1,12 @@
 {
-  "name": "business_dates",
+  "name": "business-dates-api",
   "version": "1.0.0",
   "description": "API REST para cálculo de fechas hábiles en Colombia",
   "type": "commonjs",
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "build:vercel": "npm run build",
     "start": "node dist/app.js",
     "dev": "nodemon --exec \"node -r tsconfig-paths/register -r ts-node/register src/app.ts\"",
     "test": "jest --u",
@@ -27,7 +28,8 @@
     "vercel:dev": "vercel dev",
     "vercel:deploy": "vercel --prod",
     "vercel:preview": "vercel",
-    "vercel:logs": "vercel logs"
+    "vercel:logs": "vercel logs",
+    "pre-deploy": "node scripts/pre-deploy-check.js"
   },
   "keywords": [
     "business-dates",
