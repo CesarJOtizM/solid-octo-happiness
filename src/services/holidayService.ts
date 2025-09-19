@@ -6,7 +6,7 @@ import {
   HolidayServiceError,
   HolidayResult,
   CacheResult,
-} from "types/holiday";
+} from "types";
 import { config } from "config";
 
 let cache: HolidayCache | null = null;

@@ -4,7 +4,7 @@ import { config } from "dotenv";
 // Cargar variables de entorno
 config();
 
-const envSchema = z.object({
+export const envSchema = z.object({
   PORT: z
     .string()
     .default("3000")
@@ -85,7 +85,7 @@ const envSchema = z.object({
 
 export type EnvConfig = z.infer<typeof envSchema>;
 
-function validateEnv(): EnvConfig {
+export function validateEnv(): EnvConfig {
   try {
     const env = envSchema.parse(process.env);
 

@@ -12,12 +12,12 @@ import {
   WORKING_HOURS,
 } from "utils/dateUtils";
 import {
+  BusinessDateError,
   BusinessDateRequest,
   BusinessDateSuccessResponse,
-  BusinessDateError,
   DateCalculationResponse,
   DateCalculationResult,
-} from "types/businessDate";
+} from "types";
 
 const getStartDate = (request: BusinessDateRequest): Date => {
   if (request.date) {

@@ -1,4 +1,4 @@
-import { env, type EnvConfig } from "./env";
+import { env, validateEnv, envSchema, type EnvConfig } from "./env";
 
 export const config = {
   server: {
@@ -28,3 +28,6 @@ export const config = {
 
 export type Config = typeof config;
 export type { EnvConfig };
+
+// Re-exportar las funciones y objetos necesarios para los tests
+export { env, validateEnv, envSchema };

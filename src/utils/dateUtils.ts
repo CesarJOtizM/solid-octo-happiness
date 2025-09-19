@@ -121,7 +121,7 @@ export const adjustToPreviousWorkingTime = (
     let targetDate = colombiaDate;
 
     // Retroceder hasta encontrar un día laboral
-    while (!isWorkingDay(targetDate) || isHolidayFlag) {
+    while (!isWorkingDay(targetDate)) {
       targetDate = addDays(targetDate, -1);
     }
 
